@@ -1,0 +1,36 @@
+.table {
+    margin: 0px auto 50px auto;
+    padding: 10px;
+    border: 2px solid black;
+    text-align: left;
+}
+
+.head {
+    text-align: center;
+}
+
+.td {
+    margin: 0px 5px 5px 5px;
+    padding: 10px;
+}
+
+.form {
+    border: 2px solid black;
+    margin: 0px auto 0px auto;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.button {
+    width: 150px;
+    margin: 5px auto;
+}
+
+.formRow {
+    margin: 3px auto 5px auto;
+}
+
+.homeButton {
+    margin-bottom: 10px;
+}
