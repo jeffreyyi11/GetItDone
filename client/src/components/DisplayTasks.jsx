@@ -1,21 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { navigate} from '@reach/router';
+import {Button} from '@material-ui/core';
 import styles from '../css/DisplayTasks.module.css';
 
 const DisplayTasks = ({tasks, deleteById}) => {
-
-    const finished = (logic) => {
-        return logic ? "Finished" : "Get it done!"
-    }
+    const [priorityLevel, setPriorityLevel] = useState("");
 
     const addTask = (e) => {
         navigate("/new");
+    }
+    
+    const finished = (logic) => {
+        return logic ? "Finished" : "Get it done!"
     }
 
     const finishTask = (id) => {
         deleteById(id);
         navigate("/tasks");
+    }
+
+    const filter = (e) => {
+        navigate("/filterpriority");
     }
 
     return(
@@ -43,10 +49,10 @@ const DisplayTasks = ({tasks, deleteById}) => {
                     }
                 </tbody>
             </table>
-            <button onClick={e => addTask()}>Add Task</button>
+            <Button variant="contained" color="primary" disableElevation onClick={e => addTask()}>Add Task</Button>
             <div>
-                <button onClick={e => getPriorityHigh()}>High</button>
-                <button>Low</button>
+                <button className={styles.filterButton1} value = "high" onClick={e => filter()}>High</button>
+                <button className={styles.filterButton2} value = "low" onClick={e => filter()}>Low</button>
             </div>
         </div>
     )

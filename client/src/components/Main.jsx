@@ -3,6 +3,8 @@ import axios from 'axios';
 import {Router} from '@reach/router';
 import DisplayTasks from './DisplayTasks';
 import AddTask from './AddTask';
+import FilterTask from './FilterTask';
+
 
 const Main = () => {
     const [tasks, setTasks] = useState([]);
@@ -42,6 +44,7 @@ const Main = () => {
             <Router>
                 <DisplayTasks tasks={tasks} deleteById={deleteById} path="/tasks" />
                 <AddTask addTask={addTask} path="/new" />
+                <FilterTask tasks={tasks} deleteById={deleteById} path="/filterpriority" />
             </Router>
         </div>
     )
