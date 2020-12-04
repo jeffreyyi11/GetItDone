@@ -8,6 +8,7 @@ import FilterTask from './FilterTask';
 
 const Main = () => {
     const [tasks, setTasks] = useState([]);
+    const [priorityLevel, setPriorityLevel] = useState("");
 
     useEffect (() => {
         axios.get("http://localhost:8000/task")
@@ -39,12 +40,16 @@ const Main = () => {
         setTasks(tasks.filter(task => task._id !== id))
     }
 
+    const priority = (value) => {
+        setPriorityLevel(value);
+    } 
+
     return (
         <div>
             <Router>
-                <DisplayTasks tasks={tasks} deleteById={deleteById} path="/tasks" />
+                <DisplayTasks tasks={tasks} deleteById={deleteById} priority={priority} path="/tasks" />
                 <AddTask addTask={addTask} path="/new" />
-                <FilterTask tasks={tasks} deleteById={deleteById} path="/filterpriority" />
+                <FilterTask tasks={tasks} deleteById={deleteById} priorityLevel={priorityLevel} path="/filterpriority" />
             </Router>
         </div>
     )

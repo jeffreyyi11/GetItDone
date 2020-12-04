@@ -4,9 +4,7 @@ import { navigate} from '@reach/router';
 import {Button} from '@material-ui/core';
 import styles from '../css/DisplayTasks.module.css';
 
-const DisplayTasks = ({tasks, deleteById}) => {
-    const [priorityLevel, setPriorityLevel] = useState("");
-
+const DisplayTasks = ({tasks, deleteById, priority}) => {
     const addTask = (e) => {
         navigate("/new");
     }
@@ -21,12 +19,13 @@ const DisplayTasks = ({tasks, deleteById}) => {
     }
 
     const filter = (e) => {
+        priority(e);
         navigate("/filterpriority");
     }
 
     return(
         <div>
-            <h1>Get Shit Done</h1>
+            <h1>Get It Done</h1>
             <table className={styles.table}>
                 <thead className={styles.head}>
                     <tr>
@@ -51,8 +50,8 @@ const DisplayTasks = ({tasks, deleteById}) => {
             </table>
             <Button variant="contained" color="primary" disableElevation onClick={e => addTask()}>Add Task</Button>
             <div>
-                <button className={styles.filterButton1} value = "high" onClick={e => filter()}>High</button>
-                <button className={styles.filterButton2} value = "low" onClick={e => filter()}>Low</button>
+                <button className={styles.filterButton1} value = "High" onClick={e => filter(e.target.value)}>High</button>
+                <button className={styles.filterButton2} value = "Low" onClick={e => filter(e.target.value)}>Low</button>
             </div>
         </div>
     )
